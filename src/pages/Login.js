@@ -2,37 +2,33 @@ import axios from "axios";
 import Profile from "./Profile";
 
 import React, { useState } from "react";
+
+import { useNavigate } from 'react-router-dom';
 import { connect } from "react-redux";
-import { submitForm } from "../lib/actions/submitForm";
 
-/*const submitForm = (formData) => {
-    axios.post('http://localhost:3001/api/v1/user/login', formData)
-      .then(response => {
-        // Traitez la réponse de la requête ici
-        console.log(response);
-      })
-      .catch(error => {
-        // Traitez l'erreur de la requête ici
-        console.log("erreur",error);
-      });
-  };
+import  submitForm  from "../lib/actions/submitForm";
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.target);
-    submitForm(formData);
-  };*/
 
-// function Login() {
 const Login = () => {
-
+  const history = useNavigate();
   const [formData, setFormData] = useState({});
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("formData", formData);
     submitForm(formData);
-    // console.log("submit",  submitForm(formData));
+
+
+    submitForm(formData).then(activity => {
+      console.log("Activity", activity);
+      console.log("Token", activity.body.token);
+      console.log("OK",activity.status);
+      if(activity.status == 200){
+
+        history('/profil');
+      }
+  })
+
   }
 
   const handleChange = (event) => {

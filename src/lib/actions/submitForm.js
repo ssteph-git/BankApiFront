@@ -27,7 +27,7 @@ import axios from 'axios';
     }
   }*/
   
-  export const submitForm = (formData) => {
+  /*export const submitForm = (formData) => {
     return axios.post('http://localhost:3001/api/v1/user/login', formData)
       .then(response => {
         // Traitement de la réponse de la requête
@@ -37,4 +37,12 @@ import axios from 'axios';
         // Traitement de l'erreur de la requête
         console.log('error',error);
       });
-  }
+  }*/
+
+  async function submitForm(formData) {
+    
+        const myUser = (await axios.post('http://localhost:3001/api/v1/user/login',formData)).data;
+        return myUser;
+    
+}
+export default submitForm;
