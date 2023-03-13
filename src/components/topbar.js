@@ -4,7 +4,7 @@ import './components.css';
 const Topbar = function (props) {
 
     return (
-        <header>
+        <>
             <nav className="main-nav">
                 <NavLink to="/" className="main-nav-logo">
                     <img
@@ -17,11 +17,11 @@ const Topbar = function (props) {
                 <div>
                 <NavLink to="/login" className="main-nav-item">
                         <i className="fa fa-user-circle"></i>
-                        Sign In
+                        &nbsp;Sign In
                     </NavLink>
                 </div>
             </nav>
-        </header>
+        </>
     )
 
 }
