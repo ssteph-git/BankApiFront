@@ -1,33 +1,41 @@
-import React, { useState } from "react";
-
 import { useNavigate } from "react-router-dom";
 
 import { submitForm } from "../lib/axios/infosUser";
 import { infoToken } from "../lib/axios/infosUser";
 
 import { useDispatch } from "react-redux";
-// import { saveFormData } from '../lib/redux/formSlice';
-import { saveFormData } from "../lib/redux/store";
-
 import { useSelector } from "react-redux";
+
+import { saveFormData, saveToken } from "../lib/redux/store";
+
+
 
 const Login = () => {
   const dispatch = useDispatch();
   let form = useSelector((state) => state.formSave);
+  let token = useSelector((state) => state.tokenSave);
+
   const history = useNavigate();
-  // const [formData, setFormData] = useState({});
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
     submitForm(form).then((data) => {
-      let token = data.body.token;
+
+      token = data.body.token;
       if (data.status == 200) {
         history("/profil");
-        infoToken(form, token);
+
+        // infoToken(form, token).then((data) => {
+        // });
 
         dispatch(saveFormData(form));
+        dispatch(saveToken(token));
       }
+    })
+    .catch(error => {
+      console.log("l'identifiant ou le mot de passe, est incorrect");
+      console.log(error);
     });
   };
   let typingForm;
