@@ -28,22 +28,33 @@ function Profile() {
   let pageProfil;
   let firstName = useSelector((state) => state.dataUserSave.userData.firstName);
   let lastName = useSelector((state) => state.dataUserSave.userData.lastName);
+
+  const [isActiveBackground, setIsActiveBackground] = useState(false);
+  const [isActiveButton, setIsActiveButton] = useState(false);
+
+  function handleClick() {
+    setIsActiveBackground(!isActiveBackground);
+    setIsActiveButton(!isActiveButton);
+  }
+
   if (token.token !== null) {
     pageProfil = (
       <>
-        <main className="main bg-dark">
+        {/* <main className="main bg-dark"> */}
+        <main className={`main bg-dark ${isActiveBackground ? 'isActiveBackground' : ''}`}>
           <div className="header">
             <h1>
               Welcome back
               <br />
               {firstName} {lastName}
             </h1>
-            <button className="edit-button">Edit Name</button>
+            {/* <button className="edit-button" >Edit Name</button> */}
+            <button  onClick={handleClick} className="edit-button">Edit Name</button>
           </div>
           <h2 className="sr-only">Accounts</h2>
-          <Account title="Argent Bank Checking (x8349)" total="$2,082.79" balance="Available Balance"/>
-          <Account title="Argent Bank Savings (x6712)" total="$10,928.42" balance="Available Balance"/>
-          <Account title="Argent Bank Credit Card (x8349)" total="$184.30" balance="Current Balance"/>
+          <Account title="Argent Bank Checking (x8349)" total="$2,082.79" balance="Available Balance" click={isActiveButton}/>
+          <Account title="Argent Bank Savings (x6712)" total="$10,928.42" balance="Available Balance" click={isActiveButton}/>
+          <Account title="Argent Bank Credit Card (x8349)" total="$184.30" balance="Current Balance" click={isActiveButton}/>
         </main>
       </>
     );
