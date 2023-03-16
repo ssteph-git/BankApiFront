@@ -1,37 +1,59 @@
-import axios from "axios";
-import { useSelector } from "react-redux";
-import { useDispatch } from "react-redux";
-import { infoToken } from "../lib/axios/infosUser";
-import { saveStatus } from "../lib/redux/store";
+import React, { useEffect, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { infoUser } from "../lib/axios/infosUser";
+import { deleteToken } from "../lib/redux/store";
+import { saveUserData } from "../lib/redux/store";
+// import { saveStatus, saveUserData } from "../lib/redux/store";
+import { useNavigate } from "react-router-dom";
+import Account from "../components/Account";
+import Erreur from "./Erreur";
 
 function Profile() {
   const dispatch = useDispatch();
-  const form = useSelector((state) => state.formSave); //données du formulaire saisie par l'utilisateur
-  const token = useSelector((state) => state.tokenSave); //token unique de l'utilisateur
+  const history = useNavigate();
 
-  infoToken(form, token.token).then((data) => {
-    dispatch(saveStatus(data.status));
-  }).catch(error => {
-    console.log("le token n'est pas valide");
+  let token = useSelector((state) => state.tokenSave); //token unique de l'utilisateur
+
+  infoUser(token.token)
+  .then((data) => {
+    const { email, firstName, lastName } = data.body;
+    dispatch(saveUserData({ email, firstName, lastName }));
+  })
+  .catch((error) => {
+    console.log("Vous avez été déconnecté");
     console.log(error);
+    dispatch(deleteToken());
   });
 
-  const status = useSelector((state) => state.statusSave);
-
   let pageProfil;
-  if (status.status == 200) {
-    //si le statut est à 200: il est valide, s'il est 400: il ne l'est pas
+  let firstName = useSelector((state) => state.dataUserSave.userData.firstName);
+  let lastName = useSelector((state) => state.dataUserSave.userData.lastName);
+  if (token.token !== null) {
     pageProfil = (
       <>
-        page profil
-        <p>{form.formData.email}</p>
+        <main className="main bg-dark">
+          <div className="header">
+            <h1>
+              Welcome back
+              <br />
+              {firstName} {lastName}
+            </h1>
+            <button className="edit-button">Edit Name</button>
+          </div>
+          <h2 className="sr-only">Accounts</h2>
+          <Account title="Argent Bank Checking (x8349)" total="$2,082.79" balance="Available Balance"/>
+          <Account title="Argent Bank Savings (x6712)" total="$10,928.42" balance="Available Balance"/>
+          <Account title="Argent Bank Credit Card (x8349)" total="$184.30" balance="Current Balance"/>
+        </main>
       </>
     );
   } else {
     pageProfil = <>Vous avez été déconnecté!</>;
+    // pageProfil = (<Erreur/>);
+    // history("/profilt");
   }
 
-  return <>{pageProfil};</>;
+  return pageProfil;
 }
 
 export default Profile;

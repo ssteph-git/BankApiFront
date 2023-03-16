@@ -23,6 +23,8 @@ body {
 
 main.main.bg-dark {
   display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .sr-only {
@@ -185,6 +187,11 @@ main.main.bg-dark {
 
 .sign-in-icon {
   /* font-size: 5rem; */
+}
+
+.fa-right-from-bracket{
+  margin-right: 4px;
+  margin-left: 4px;
 }
 
 .input-remember {

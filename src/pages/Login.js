@@ -1,37 +1,31 @@
 import { useNavigate } from "react-router-dom";
 
-import { submitForm } from "../lib/axios/infosUser";
-import { infoToken } from "../lib/axios/infosUser";
+import { submitFormUser } from "../lib/axios/infosUser";
+import { infoUser } from "../lib/axios/infosUser";
 
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 
-import { saveFormData, saveToken } from "../lib/redux/store";
+import { saveFormData, saveToken, saveUserData } from "../lib/redux/store";
 
 
 
 const Login = () => {
   const dispatch = useDispatch();
-  let form = useSelector((state) => state.formSave);
-  let token = useSelector((state) => state.tokenSave);
+  let form = {email: "", password:""};
 
   const history = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    submitForm(form).then((data) => {
+    submitFormUser(form).then((data) => {
 
-      token = data.body.token;
-      if (data.status == 200) {
+      let token = data.body.token;
+
+        dispatch(saveToken(token));
         history("/profil");
 
-        // infoToken(form, token).then((data) => {
-        // });
-
-        dispatch(saveFormData(form));
-        dispatch(saveToken(token));
-      }
     })
     .catch(error => {
       console.log("l'identifiant ou le mot de passe, est incorrect");

@@ -7,7 +7,7 @@ const tokenSlice = createSlice({
       },
     reducers: {
       saveToken: (state, action) => {state.token = action.payload;},
-      deleteToken:(state, action) =>{state.token =  null}
+      deleteToken:(state) =>{state.token =  null}
     }
   });
   

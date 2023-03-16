@@ -7,7 +7,7 @@ const formSlice = createSlice({
     },
     reducers: {
       saveFormData: (state, action) => {state.formData = action.payload;},
-      emptyFormData:(state, action) =>{state.formData =  {email: "", password:""}}
+      emptyFormData:(state) =>{state.formData =  {email: "", password:""}}
     }
   });
   

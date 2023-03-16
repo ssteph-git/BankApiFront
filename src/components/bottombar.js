@@ -1,4 +1,3 @@
-import './components.css';
 
 const Bottombar = function (props) {
 

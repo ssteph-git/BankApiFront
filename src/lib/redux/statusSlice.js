@@ -7,7 +7,7 @@ const statusSlice = createSlice({
       },
     reducers: {
       saveStatus: (state, action) => {state.status = action.payload;},
-      deleteStatus:(state, action) =>{state.token =  null}
+      deleteStatus:(state) =>{state.status =  null}
     }
   });
   
