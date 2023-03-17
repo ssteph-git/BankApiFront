@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { submitFormUser } from "../lib/axios/infosUser";
 import { useDispatch } from "react-redux";
-import { saveToken } from "../lib/redux/store";
+import { saveToken } from "../lib/redux/mySlice";
 
 const Login = () => {
   const dispatch = useDispatch();

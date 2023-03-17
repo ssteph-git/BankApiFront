@@ -1,11 +1,10 @@
 import { NavLink } from "react-router-dom";
-// import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteToken, deleteUserData, isActiveFalse } from "../lib/redux/store";
+import { deleteToken, deleteUserData, isActiveFalse } from "../lib/redux/mySlice";
 
 const Topbar = function (props) {
   const dispatch = useDispatch();
-  let token = useSelector((state) => state.tokenSave); //token unique de l'utilisateur
+  let token = useSelector((state) => state.tokenSave.token); //token unique de l'utilisateur
   let firstName = useSelector((state) => state.dataUserSave.userData.firstName);
   let isActive = useSelector((state) => state.turnIsActive.isActive);
 
@@ -23,7 +22,7 @@ const Topbar = function (props) {
   }
 
   let topbar;
-  if (token.token !== null) {
+  if (token !== null) {
     topbar = (
       <>
         <nav className="main-nav">

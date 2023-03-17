@@ -1,5 +1,5 @@
-import Advertisement from "../components/advertisement";
-import Exemple from "../components/example";
+import Advertisement from "../components/Advertisement";
+import Exemple from "../components/Example";
 
 function Home() {
   return (

@@ -1,15 +1,15 @@
 import { useSelector, useDispatch } from "react-redux";
 import { infoUser } from "../lib/axios/infosUser";
-import { deleteToken,saveUserData } from "../lib/redux/store";
+import { deleteToken,saveUserData } from "../lib/redux/mySlice";
 import Account from "../components/Account";
 import Civility from "../components/Civility";
 import Logout from "./Logout";
 
 function Profile() {
   const dispatch = useDispatch();
-  let token = useSelector((state) => state.tokenSave); //token unique de l'utilisateur
+  let token = useSelector((state) => state.tokenSave.token); //token unique de l'utilisateur
 
-  infoUser(token.token)//recherches des infos de l'utilisateur: dans la bdd
+  infoUser(token)//recherches des infos de l'utilisateur: dans la bdd
   .then((data) => {
     const { email, firstName, lastName } = data.body;
     dispatch(saveUserData({ email, firstName, lastName }));
@@ -23,7 +23,7 @@ function Profile() {
   let pageProfil;
   let isActive = useSelector((state) => state.turnIsActive.isActive); //isActive permet de changer les couleurs de plusieurs elements de la page profil: si l'on appuis sur le bouton "Edit Name" (ainsi: on ajoute une propriété "active" à l'element que nous voulons changer: dans le css: qui changera la couleur)
 
-  if (token.token !== null) {
+  if (token !== null) {
     pageProfil = (
       <>
         <main className={`main bg-dark ${isActive ? 'isActiveBackground' : ''}`}>

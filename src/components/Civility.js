@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from "react-redux";
-import { isActiveTurn } from "../lib/redux/store";
+import { isActiveTurn } from "../lib/redux/mySlice";
 import { changeInfoUser } from "../lib/axios/infosUser";
 
 const Civility = function (props) {
