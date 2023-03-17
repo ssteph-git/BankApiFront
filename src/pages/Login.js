@@ -41,6 +41,7 @@ const Login = () => {
               id="username"
               name="email"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="input-wrapper">
@@ -50,6 +51,7 @@ const Login = () => {
               id="password"
               name="password"
               onChange={handleChange}
+              required
             />
           </div>
           <div className="input-remember">

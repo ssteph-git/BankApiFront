@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 // import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { deleteToken, deleteUserData } from "../lib/redux/store";
+import { deleteToken, deleteUserData, isActiveFalse } from "../lib/redux/store";
 
 const Topbar = function (props) {
   const dispatch = useDispatch();
@@ -12,6 +12,7 @@ const Topbar = function (props) {
   function handleClick() {//déconnexion
     dispatch(deleteToken());
     dispatch(deleteUserData());
+    dispatch(isActiveFalse());
   }
 
   let iconUser;

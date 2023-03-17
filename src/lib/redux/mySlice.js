@@ -17,7 +17,8 @@ const dataUserSlice = createSlice({
         isActive: false 
       },
     reducers: {
-      isActiveTurn: (state) => {state.isActive = !state.isActive;}
+      isActiveTurn: (state) => {state.isActive = !state.isActive;},
+      isActiveFalse: (state) => {state.isActive = false;}
     }
   });
   

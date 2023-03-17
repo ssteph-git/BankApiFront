@@ -9,7 +9,7 @@ export const  {saveFormData, emptyFormData} = formSlice.actions;
 export const  {saveToken, deleteToken} = tokenSlice.actions;
 export const  {saveStatus, deleteStatus} = statusSlice.actions;
 export const  {saveUserData, deleteUserData} = dataUserSlice.actions;
-export const  {isActiveTurn} = isColorActiveSlice.actions;
+export const  {isActiveTurn, isActiveFalse} = isColorActiveSlice.actions;
 
 const store = configureStore({
   reducer: {
@@ -17,7 +17,8 @@ const store = configureStore({
     tokenSave: tokenSlice.reducer,
     statusSave: statusSlice.reducer,
     dataUserSave: dataUserSlice.reducer,
-    turnIsActive: isColorActiveSlice.reducer
+    turnIsActive: isColorActiveSlice.reducer,
+    isActiveFalse: isColorActiveSlice.reducer
   }
 });
 
