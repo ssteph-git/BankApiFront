@@ -1,39 +1,29 @@
 import { useNavigate } from "react-router-dom";
-
 import { submitFormUser } from "../lib/axios/infosUser";
-import { infoUser } from "../lib/axios/infosUser";
-
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
-
-import { saveFormData, saveToken, saveUserData } from "../lib/redux/store";
-
-
+import { saveToken } from "../lib/redux/store";
 
 const Login = () => {
   const dispatch = useDispatch();
-  let form = {email: "", password:""};
-
+  let form = { email: "", password: "" };
   const history = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
-    submitFormUser(form).then((data) => {
-
-      let token = data.body.token;
-
+    submitFormUser(form)
+      .then((data) => {
+        let token = data.body.token;
         dispatch(saveToken(token));
         history("/profil");
-
-    })
-    .catch(error => {
-      console.log("l'identifiant ou le mot de passe, est incorrect");
-      console.log(error);
-    });
+      })
+      .catch((error) => {
+        console.log("l'identifiant ou le mot de passe, est incorrect");
+        console.log(error);
+      });
   };
+
   let typingForm;
-  const handleChange = (event) => {
+  const handleChange = (event) => {//Récupérations des données tapés dans le formulaire
     typingForm = { ...typingForm, [event.target.name]: event.target.value };
     form = typingForm;
   };

@@ -17,4 +17,15 @@ async function infoUser(token) {
       return myToken;
 
 }
-export {submitFormUser, infoUser};
+
+async function changeInfoUser(dataUser,token) {
+  const myNewInfoUser = (await axios.put('http://localhost:3001/api/v1/user/profile', dataUser, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          "Content-type": "application/json; charset=UTF-8"
+        }
+      })).data;
+      return myNewInfoUser;
+
+}
+export {submitFormUser, infoUser, changeInfoUser};

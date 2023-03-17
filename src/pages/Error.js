@@ -1,4 +1,4 @@
-function Erreur(props) {
+function Error(props) {
     return (
         <>
         Erreur
@@ -6,5 +6,5 @@ function Erreur(props) {
     );
   }
   
-  export default Erreur;
+  export default Error;
   

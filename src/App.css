@@ -36,6 +36,10 @@ main.main.bg-dark {
   border-color: #6458F5 !important;
 }
 
+.isActiveSection{
+  border: 2px solid #CCD6DF !important;
+}
+
 .sr-only {
   border: 0 !important;
   clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
@@ -87,6 +91,15 @@ main.main.bg-dark {
 .main-nav-logo-image {
   max-width: 100%;
   width: 200px;
+}
+
+.welcome{
+  color: black;
+  font-size: 1.1rem;
+}
+
+.fa-grey{
+  color: #CCD6DF;
 }
 
 .hero {
@@ -225,6 +238,38 @@ main.main.bg-dark {
 .input-wrapper input {
   padding: 5px;
   font-size: 1.2rem;
+}
+
+#editInput{
+  /* padding: 5px;
+  font-size: 2.2rem; */
+  width: 10vw;
+    height: 2.2vw;
+    margin-right: 10px;
+    border: 2px solid #CCD6DF !important;
+
+}
+
+.editButton {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#editInput::placeholder {
+ opacity: 0.45;
+ padding-left: 5px;
+}
+
+.buttonValidate{
+  background-color: white;
+  width: 7vw;
+  font-size: 0.6rem;
+  padding: 3px;
+  color: #6458F5;
+  border: 1px solid #6458F5;
+  margin-right: 10px;
+  font-weight: bold;
 }
 
 .footer {

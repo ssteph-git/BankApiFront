@@ -10,5 +10,16 @@ const dataUserSlice = createSlice({
       deleteUserData:(state) =>{state.userData =  {email: "", firstName:"", lastName:""}}
     }
   });
+
+  const isColorActiveSlice = createSlice({
+    name: 'turnIsActive',
+    initialState: {
+        isActive: false 
+      },
+    reducers: {
+      isActiveTurn: (state) => {state.isActive = !state.isActive;}
+    }
+  });
   
-  export {dataUserSlice};
+  
+  export {dataUserSlice,isColorActiveSlice};
