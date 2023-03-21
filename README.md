@@ -14,5 +14,5 @@
   - Email: tony@stark.com
   - Password: password123
  - user 2
-  - Email: steve@rogers.com,
+  - Email: steve@rogers.com
   - Password: password456
