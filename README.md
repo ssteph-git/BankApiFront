@@ -2,10 +2,11 @@
 - Node JS
 ## 1.Install the backend
 - (https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API) 
- - npm install
- - npm run dev:server
- - npm run populate-db
-- note: Set up the backend on port 3001
+     - (note: Set up the backend on port 3001) 
+       - npm install
+       - npm run dev:server
+       - npm run populate-db
+
 ## 2.Install this project
 - npm i
 - go to the login page ("sign in" link in the top bar)
