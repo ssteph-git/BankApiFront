@@ -10,9 +10,9 @@
 - npm i
 - go to the login page ("sign in" link in the top bar)
 - Fill out the form
- - user 1
-  - Email: tony@stark.com
-  - Password: password123
- - user 2
-  - Email: steve@rogers.com
-  - Password: password456
+  - user 1
+    - Email: tony@stark.com
+    - Password: password123
+  - user 2
+    - Email: steve@rogers.com
+    - Password: password456
