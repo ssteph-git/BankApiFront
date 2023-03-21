@@ -1,5 +1,6 @@
 ## 0.Prerequisites
 - Node JS
+- MongoDB Community Server
 ## 1.Install the backend
 - (https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API) 
      - (note: Set up the backend on port 3001) 
